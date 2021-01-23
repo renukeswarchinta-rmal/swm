@@ -7,7 +7,7 @@ import lombok.Data;
 public class PoiMasterDTO {
 
     private Long poi_id;
-    private String ward_name;
+    private String ward_id;
     private String holding_no;
     private String usage_type;
     private String property_type;

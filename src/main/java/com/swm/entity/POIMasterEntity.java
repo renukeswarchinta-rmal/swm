@@ -8,15 +8,15 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @Entity
-@Table
+@Table(name = "poi_master")
 public class POIMasterEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "poi_id")
     private Long poi_id;
-    @Column(name = "ward_name")
-    private String ward_name;
+    @Column(name = "ward_id")
+    private String ward_id;
     @Column(name = "holding_no")
     private String holding_no;
     @Column(name = "usage_type")
@@ -29,8 +29,6 @@ public class POIMasterEntity {
     private String owner_name;
     @Column(name = "guardian_name")
     private String guardian_name;
-    @Column(name = "mobile_no" )
-    private String mobile_no;
     @Column(name = "mobile_no")
     private  String property_address;
     @Column(name = "city")
