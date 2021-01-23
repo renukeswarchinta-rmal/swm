@@ -1,12 +1,12 @@
 package com.swm.service;
 
 
+import com.swm.config.ObjectMapperUtils;
 import com.swm.dto.PoiMasterDTO;
-import com.swm.entity.POIMasterEntity;
+import com.swm.entity.POIMaster;
 import com.swm.repository.POIMasterRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -24,8 +24,8 @@ public class POIMasterService {
 
     public ResponseEntity<?> updatePOIMasterData(PoiMasterDTO poiMasterDTO) {
         if (poiMasterRepository.findById(poiMasterDTO.getPoi_id()).isPresent()) {
-            POIMasterEntity poiMasterEntity = modelMapper.map(poiMasterDTO, POIMasterEntity.class);
-            POIMasterEntity savedPOIMaster = poiMasterRepository.save(poiMasterEntity);
+            POIMaster poiMaster = modelMapper.map(poiMasterDTO, POIMaster.class);
+            POIMaster savedPOIMaster = poiMasterRepository.save(poiMaster);
             return ResponseEntity.ok(savedPOIMaster);
         }else{
             return ResponseEntity.notFound().build();
@@ -33,9 +33,9 @@ public class POIMasterService {
     }
 
     public List<PoiMasterDTO> searchPOIMaster(String name){
-        List<POIMasterEntity> poiMasterEntities = poiMasterRepository.search(name);
-        return poiMasterEntities.stream().map(poiMasterEntity -> modelMapper.map(poiMasterEntity,PoiMasterDTO.class))
-                                  .collect(Collectors.toList());
+        List<POIMaster> poiMasterEntities = poiMasterRepository.search(name);
+        return ObjectMapperUtils.mapAll(poiMasterEntities,PoiMasterDTO.class);
+
     }
 
 }

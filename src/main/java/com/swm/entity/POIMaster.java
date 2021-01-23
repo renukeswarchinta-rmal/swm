@@ -1,15 +1,10 @@
 package com.swm.entity;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 
-@Data
-@NoArgsConstructor
 @Entity
 @Table(name = "poi_master")
-public class POIMasterEntity {
+public class POIMaster {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -41,4 +36,11 @@ public class POIMasterEntity {
     private float latitude;
     @Column(name = "longitude")
     private float longitude;
+    @Column(name = "poi_type")
+    private String poiType;
+    @Column(name = "rf_id")
+    private String rfId;
+    @Column(name = "qr_code")
+    private String qrCode;
+
 }

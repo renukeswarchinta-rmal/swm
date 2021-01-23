@@ -1,10 +1,7 @@
 package com.swm.controller;
 
 import com.swm.dto.PoiMasterDTO;
-import com.swm.entity.POIMasterEntity;
-import com.swm.repository.POIMasterRepository;
 import com.swm.service.POIMasterService;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,9 +24,9 @@ public class POIMasterController {
     }
 
 
-    @GetMapping
-    public List<PoiMasterDTO> searchPOIMaster(@RequestParam(value = "name", required = false) String name){
-            return poiMasterService.searchPOIMaster(name);
+    @GetMapping("/search")
+    public List<PoiMasterDTO> searchPOIMaster(@RequestParam(value = "ownerName", required = false) String ownerName){
+            return poiMasterService.searchPOIMaster(ownerName);
     }
     @GetMapping("/test")
     public ResponseEntity<?> test(){

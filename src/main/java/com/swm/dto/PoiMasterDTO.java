@@ -14,7 +14,7 @@ public class PoiMasterDTO {
     private String plot_no;
     private String owner_name;
     private String guardian_name;
-    private String mobile_no;
+    private String mobile_number;
     private  String property_address;
     private String city;
     private int pin;
