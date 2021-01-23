@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/poi_master")
 public class POIMasterController {
@@ -24,7 +26,11 @@ public class POIMasterController {
         return poiMasterService.updatePOIMasterData(poiMasterDTO);
     }
 
-    
+
+    @GetMapping
+    public List<PoiMasterDTO> searchPOIMaster(@RequestParam(value = "name", required = false) String name){
+            return poiMasterService.searchPOIMaster(name);
+    }
     @GetMapping("/test")
     public ResponseEntity<?> test(){
         return ResponseEntity.ok("Testing ");

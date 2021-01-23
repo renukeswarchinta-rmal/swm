@@ -29,7 +29,9 @@ public class POIMasterEntity {
     private String owner_name;
     @Column(name = "guardian_name")
     private String guardian_name;
-    @Column(name = "mobile_no")
+    @Column(name = "mobile_number")
+    private String mobile_number;
+    @Column(name = "property_address")
     private  String property_address;
     @Column(name = "city")
     private String city;

@@ -6,8 +6,12 @@ import com.swm.entity.POIMasterEntity;
 import com.swm.repository.POIMasterRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class POIMasterService {
@@ -26,6 +30,12 @@ public class POIMasterService {
         }else{
             return ResponseEntity.notFound().build();
         }
+    }
+
+    public List<PoiMasterDTO> searchPOIMaster(String name){
+        List<POIMasterEntity> poiMasterEntities = poiMasterRepository.search(name);
+        return poiMasterEntities.stream().map(poiMasterEntity -> modelMapper.map(poiMasterEntity,PoiMasterDTO.class))
+                                  .collect(Collectors.toList());
     }
 
 }
