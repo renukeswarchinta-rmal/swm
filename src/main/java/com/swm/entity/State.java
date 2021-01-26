@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "ese_state_master")
@@ -40,5 +41,7 @@ public class State {
     @JoinColumn(name = "zone_id",nullable = false )
     private Zone zone;
 
+    @OneToMany(mappedBy = "state",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private List<City> cities;
 
 }
