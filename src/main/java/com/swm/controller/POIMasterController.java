@@ -60,7 +60,7 @@ public class POIMasterController {
         return cityRepository.findAll();
     }
 
-    @GetMapping("/poimaster")
+    @GetMapping("/poimasterdata")
     public List<PoiMasterDTO> poiData(){
         return poiMasterService.getPOIData();
     }
