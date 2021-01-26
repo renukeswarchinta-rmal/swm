@@ -2,6 +2,7 @@ package com.swm.controller;
 
 import com.swm.dto.PoiMasterDTO;
 import com.swm.entity.City;
+import com.swm.entity.POIMaster;
 import com.swm.entity.State;
 import com.swm.entity.Zone;
 import com.swm.repository.CityRepository;
@@ -28,7 +29,6 @@ public class POIMasterController {
     private ZoneRepository zoneRepository;
     @Autowired
     private CityRepository cityRepository;
-
 
     @PostMapping("/update")
     public ResponseEntity<?> updatePOIMasterData(@RequestBody PoiMasterDTO poiMasterDTO){
@@ -58,5 +58,10 @@ public class POIMasterController {
     @GetMapping("/cities")
     public List<City> cities(){
         return cityRepository.findAll();
+    }
+
+    @GetMapping("/poimaster")
+    public List<PoiMasterDTO> poiData(){
+        return poiMasterService.getPOIData();
     }
 }

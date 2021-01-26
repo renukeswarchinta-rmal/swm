@@ -1,29 +1,27 @@
 package com.swm.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
-@Data
-@NoArgsConstructor
 @Entity
-@Table(name = "ese_city_master")
-public class City {
+@Table(name = "ese_pin_code_master")
+@NoArgsConstructor
+@Data
+public class PinCode {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "city_name")
-    private String cityName;
+    @Column(name = "pin_code")
+    private String pinCode;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private State state;
+    @JoinColumn(name = "city_id",nullable = false)
+    private City city;
 
-    @OneToMany(mappedBy = "city",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private List<PinCode> pinCode;
 }

@@ -27,5 +27,8 @@ public class Zone {
     @OneToMany(mappedBy = "zone",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<State> states;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "zone")
+    private List<WardMaster> wardMasters;
+
 
 }

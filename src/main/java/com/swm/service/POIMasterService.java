@@ -23,7 +23,7 @@ public class POIMasterService {
     private ModelMapper modelMapper;
 
     public ResponseEntity<?> updatePOIMasterData(PoiMasterDTO poiMasterDTO) {
-        if (poiMasterRepository.findById(poiMasterDTO.getPoi_id()).isPresent()) {
+        if (poiMasterRepository.findById(poiMasterDTO.getId()).isPresent()) {
             POIMaster poiMaster = modelMapper.map(poiMasterDTO, POIMaster.class);
             POIMaster savedPOIMaster = poiMasterRepository.save(poiMaster);
             return ResponseEntity.ok(savedPOIMaster);
@@ -36,6 +36,11 @@ public class POIMasterService {
         List<POIMaster> poiMasterEntities = poiMasterRepository.search(name);
         return ObjectMapperUtils.mapAll(poiMasterEntities,PoiMasterDTO.class);
 
+    }
+
+    public List<PoiMasterDTO> getPOIData(){
+        List<POIMaster> poiMasterDTOList =  poiMasterRepository.findAll();
+        return ObjectMapperUtils.mapAll(poiMasterDTOList,PoiMasterDTO.class);
     }
 
 }
