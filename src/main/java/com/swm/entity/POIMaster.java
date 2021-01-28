@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "poi_master")
+@Table(name = "ese_poi_master")
 public class POIMaster {
 
     @Id
@@ -58,7 +58,7 @@ public class POIMaster {
     private String rfId;
     @Column(name = "qr_code")
     private String qrCode;
-    @Column(name= "user_group_id")
-    private int userGroupId;
+    @Column(name= "user_group_id", columnDefinition = "integer default 0")
+    private Integer userGroupId;
 
 }
