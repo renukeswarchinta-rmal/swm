@@ -42,10 +42,11 @@ public class POIMasterService {
     public List<PoiMasterDTO> searchPOIMaster(String ownerName,String holding_no,String plot_no,
                                               String guardian_name,String mobile_number,
                                               String property_address,String cityName,String pinCode,String rfId,
-                                              String qrCode,String wardNumber){
+                                              String qrCode,String wardNumber,Integer pageNo,Integer pageSize){
         //List<POIMaster> poiMasterEntities = poiMasterRepository.search(ownerName,holding_no,plot_no,guardian_name,mobile_number,
+        Pageable paging = PageRequest.of(pageNo, pageSize);
         List<POIMaster> poiMasterEntities = poiMasterCustomRepository.searchByAllFields(ownerName,holding_no,plot_no,guardian_name,mobile_number,
-                                                            property_address,cityName,pinCode,rfId,qrCode,wardNumber);
+                                                            property_address,cityName,pinCode,rfId,qrCode,wardNumber,pageNo,pageSize);
         return ObjectMapperUtils.mapAll(poiMasterEntities,PoiMasterDTO.class);
 
     }

@@ -46,10 +46,12 @@ public class POIMasterController {
                                               @RequestParam(value = "pinCode", required = false) String pinCode,
                                               @RequestParam(value = "rfId", required = false) String rfId,
                                               @RequestParam(value = "qrCode", required = false) String qrCode,
-                                              @RequestParam(value = "wardNumber", required = false) String wardNumber
+                                              @RequestParam(value = "wardNumber", required = false) String wardNumber,
+                                              @RequestParam(defaultValue = "0") Integer pageNo,
+                                              @RequestParam(defaultValue = "10") Integer pageSize
                                               ){
             return poiMasterService.searchPOIMaster(ownerName,holding_no,plot_no,guardian_name,mobile_number,
-                property_address,cityName,pinCode,rfId,qrCode,wardNumber);
+                property_address,cityName,pinCode,rfId,qrCode,wardNumber,pageNo,pageSize);
     }
     @GetMapping("/test")
     public ResponseEntity<?> test(){
